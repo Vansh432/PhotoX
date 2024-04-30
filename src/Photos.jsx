@@ -7,6 +7,7 @@ function Photos(props){
 
   const [colorHeart,setcolorHeart]=useState(JSON.parse(coloH)||{});
   const [favourites,collectionFavourites]=useState(JSON.parse(favImg)||[]);  
+  
   console.log(colorHeart);
   
 
@@ -14,7 +15,9 @@ function Photos(props){
    sessionStorage.setItem('favourites',JSON.stringify(favourites));
    sessionStorage.setItem('colorHeart',JSON.stringify(colorHeart));
   },[favourites,colorHeart]);
-  props.getFavData();
+  useEffect(()=>{
+   props.getFavData();
+  })
   function changeColor(id,imgUrl){
    
     setcolorHeart((prev)=>{
